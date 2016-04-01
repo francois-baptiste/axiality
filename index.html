@@ -1,203 +1,63 @@
+---
+---
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bienvenue sur www.axiality.fr</title>
-	<meta name="keywords" content="Axiality, kinect, développement, AWS, traitement du signal">
-	<meta name="description" content="Axiality, est une société de développement, formation et conseil en solutions informatiques complexes et/ou scientifiques.">
+  <title>{{ site.title }}</title>
+	<meta name="keywords" content="{{ site.keywords }}">
+	<meta name="description" content="{{ site.description }}">
   <link rel="stylesheet" href="combo.css">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  {% if site.favicon %}<link rel="shortcut icon" href="{{ site.favicon }}" type="image/x-icon">{% endif %}
+	{% if site.touch_icon %}<link rel="apple-touch-icon" href="{{ site.touch_icon }}">{% endif %}
 </head>
 <body>
   <div id="main">
 
     <nav><ul>
-      
-        
-        <li class="p-intro"><a href="#intro">Axiality</a></li>
-      
-        
-        <li class="p-project"><a href="#project">Notre projet</a></li>
-      
-        
-        <li class="p-about"><a href="#about">Qui sommes nous?</a></li>
-      
-        
-        <li class="p-contactus"><a href="#contactus">Nous contacter</a></li>
-      
-        
-        <li class="p-legals"><a href="#legals">infos legales</a></li>
-      
+      {% for node in site.posts reversed %}
+        {% capture id %}{{ node.id | remove:'/' | downcase }}{% endcapture %}
+        <li class="p-{{id}}"><a href="#{{id}}">{{node.title}}</a></li>
+      {% endfor %}
     </ul></nav>
 
 
-    
-      
-      <div id="intro" class="section p-intro">
-        
-        <div class="container center">
-          <div class="image"><img src="img/logo_axiality.png" alt="Logo Axiality" /></div>
-
-<p><br /></p>
-
-<p>Axiality.fr est le site web de la société Axiality, société de développement, formation et conseil en solutions informatiques complexes et/ou scientifiques.</p>
-
-<p>En réponse à des problématiques diverses, Axiality propose des solutions, traitement du signal, traitement de l’image, mathématiques, statistiques, machine learning, capables de passer à l’échelle (élasticité au sens du Cloud computing).</p>
-
-
+    {% for page in site.posts reversed %}
+      {% capture id %}{{ page.id | remove:'/' | downcase }}{% endcapture %}
+      <div id="{{id}}" class="section p-{{id}}">
+        {% if page.icon %}
+        <div class="subtlecircle sectiondivider imaged">
+          <img src="{{page.icon}}" alt="section icon" />
+          <h5 class="icon-title">{{ page.title }}</h5>
         </div>
-      </div>
-    
-      
-      <div id="project" class="section p-project">
-        
+        {% elsif page.fa-icon %}
         <div class="subtlecircle sectiondivider faicon">
           <span class="fa-stack">
             <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-flask fa-stack-1x"></i>
+            <i class="fa fa-{{ page.fa-icon }} fa-stack-1x"></i>
           </span>
-          <h5 class="icon-title">Notre projet</h5>
+          <h5 class="icon-title">{{ page.title }}</h5>
         </div>
-        
-        <div class="container ">
-          <h2>Bientôt disponible!</h2>
-
-<p>Afin de permettre au plus grand nombre d’entre nous de certifier des formations en ligne, Axiality a décidé de lancer un système d’aide à la certification de formation en ligne et de surveillance d’examen à distance. Dans un premier temps, le projet s’adressera au possesseur d’une <a href="">Kinect pour Windows.
-</a></p>
-
-<div class="icontain">
-	<iframe src="//www.youtube.com/embed/eCHprAvzQso" allowfullscreen=""></iframe>
-</div>
-
-
+        {% endif %}
+        <div class="container {{ page.style }}">
+          {{ page.content }}
         </div>
       </div>
-    
-      
-      <div id="about" class="section p-about">
-        
-        <div class="subtlecircle sectiondivider faicon">
-          <span class="fa-stack">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-user fa-stack-1x"></i>
-          </span>
-          <h5 class="icon-title">Qui sommes nous?</h5>
-        </div>
-        
-        <div class="container center">
-          <div class="image"><img src="img/Francois_BAPTISTE.jpg" alt="François BAPTISTE" /></div>
-
-<p>François BAPTISTE est ingénieur généraliste à dominante traitement du signal et de l’image. Il est diplômé de TELECOM SudParis (ex TELECOM INT) et de Dublin City University.</p>
-
-<p>Il a exercé la fonction d’ingénieur en recherche et développement pendant 3½ ans au sein du groupe Thales.</p>
-
-<p>François a fondé Axiality, une société de conseil, développement et formation informatique en 2015.</p>
-
-        </div>
-      </div>
-    
-      
-      <div id="contactus" class="section p-contactus">
-        
-        <div class="subtlecircle sectiondivider faicon">
-          <span class="fa-stack">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-envelope-o fa-stack-1x"></i>
-          </span>
-          <h5 class="icon-title">Nous contacter</h5>
-        </div>
-        
-        <div class="container ">
-          <h2>E-mail: <a href="mailto:contact@axiality.fr"> contact@axiality.fr </a></h2>
-
-        </div>
-      </div>
-    
-      
-      <div id="legals" class="section p-legals">
-        
-        <div class="subtlecircle sectiondivider faicon">
-          <span class="fa-stack">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-gavel fa-stack-1x"></i>
-          </span>
-          <h5 class="icon-title">infos legales</h5>
-        </div>
-        
-        <div class="container ">
-          <h3>Editeur du Site</h3>
-
-<p><a href="http://www.axiality.fr">Axiality</a>, société par actions simplifiées au capital de 2 000 euros, immatriculée au registre du Commerce et des Sociétés de Paris sous le numéro 815 321 088, dont le siège social est sis 2B rue de Chantilly, 75009 Paris, France.</p>
-
-<ol>
-  <li><strong>Directeur de la publication :</strong> Monsieur François BAPTISTE</li>
-  <li><strong>Numéro de TVA intracommunautaire :</strong> FR24815321088</li>
-  <li><strong>Numéro de téléphone :</strong> +33 6 87 17 42 60</li>
-</ol>
-
-<h3>Hébergement</h3>
-
-<ol>
-  <li><strong>Société :</strong> <a href="http://aws.amazon.com">Amazon Web Services Inc.</a></li>
-  <li><strong>Adresse :</strong> 410 Terry Ave North, Seattle , WA 98109-5210 , US (Etats-Unis)</li>
-  <li><strong>Numéro de téléphone :</strong> +1 (206) 266-4064 (Département Juridique)</li>
-</ol>
-
-<h3>Propriété intellectuelle</h3>
-
-<ol>
-  <li><strong>Concepteur du site :</strong> <a href="http://www.axiality.fr">SAS Axiality</a></li>
-</ol>
-
-
-        </div>
-      </div>
-    
+    {% endfor %}
 
 
     <div id="footer" class="section text-white">
       <div class="container">
-        
-        <p>SAS Axiality
-—
-Copyright © 2016</p>
-
-<ul class="social-list">
-  <li>
-    <a href="mailto:contact@axiality.fr"><i class="fa fa-envelope fa-2x text-white"></i></a>
-  </li>
-  <li>
-    <a href="https://twitter.com/axiality_fr"><i class="fa fa-twitter fa-2x text-white"></i></a>
-  </li>
-  <li>
-    <a href="https://www.linkedin.com/company/axiality"><i class="fa fa-linkedin-square fa-2x text-white"></i></a>
-  </li>
-</ul>
-
-
+        {% capture foottext %} {% include footer.md %} {% endcapture %}
+        {{ foottext | markdownify }}
       </div>
     </div>
   </div>
 
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-70674810-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-
+{% include analytics.html %}
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="site.js"></script>
