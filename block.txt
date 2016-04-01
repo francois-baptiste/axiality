@@ -1,0 +1,8 @@
+127.0.0.1 facebook.com
+127.0.0.1 facebook.net
+127.0.0.1 fbcdn.net
+127.0.0.1 fbshare.me
+127.0.0.1 www.facebook.com
+127.0.0.1 www.facebook.net
+127.0.0.1 www.fbcdn.net
+127.0.0.1 www.fbshare.me
